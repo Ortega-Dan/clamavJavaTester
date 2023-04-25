@@ -2,7 +2,6 @@ package org.danort;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.nio.file.Path;
 
 import xyz.capybara.clamav.ClamavClient;
 import xyz.capybara.clamav.commands.scan.result.ScanResult;
@@ -16,7 +15,7 @@ public class App {
 
         ClamavClient client = new ClamavClient("localhost");
 
-        FileInputStream fis = new FileInputStream("/home/danort/Downloads/eicar.com.txt");
+        FileInputStream fis = new FileInputStream(args[0]);
 
         ScanResult result = client.scan(fis);
 

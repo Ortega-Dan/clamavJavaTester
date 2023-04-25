@@ -9,7 +9,8 @@
             "name": "App",
             "request": "launch",
             "mainClass": "org.danort.App",
-            "projectName": "clamavtester"
+            "projectName": "clamavtester",
+            "args": "/home/danort/Downloads/image.png"
         }
     ]
 }
