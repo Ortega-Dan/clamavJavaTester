@@ -56,5 +56,9 @@ public class App {
 
         System.out.println(fileContent);
 
+
+        // image should run from here: docker run -d -p 4443:4443 fsouza/fake-gcs-server:latest -scheme http
+        // check buckets with: curl http://localhost:4443/storage/v1/b
+        
     }
 }
