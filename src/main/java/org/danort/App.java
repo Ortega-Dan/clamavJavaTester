@@ -36,7 +36,7 @@ public class App {
 
         var storageClient = StorageOptions.newBuilder()
                 .setHost(fakeGcsExternalUrl)
-                .setProjectId("test-project")
+                // .setProjectId("test-project")
                 .setCredentials(NoCredentials.getInstance())
                 .build()
                 .getService();
@@ -59,6 +59,6 @@ public class App {
 
         // image should run from here: docker run -d -p 4443:4443 fsouza/fake-gcs-server:latest -scheme http
         // check buckets with: curl http://localhost:4443/storage/v1/b
-        
+       
     }
 }
