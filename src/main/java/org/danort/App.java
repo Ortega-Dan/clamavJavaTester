@@ -44,9 +44,9 @@ public class App {
         {
             String fakeGcsExternalUrl = "http://localhost:4443";
 
-            String projectId = "dsgov-dev";
-            String bucketName = "bucketName";
-            String topicName = "projects/dsgov-dev/topics/NEW_FILE_UPLOAD";
+            String projectId = "project-dev";
+            String bucketName = "bucketNameNew";
+            // String topicName = "projects/project-dev/topics/NEW_FILE_UPLOAD";
 
             Storage storage = StorageOptions.newBuilder()
                     .setHost(fakeGcsExternalUrl)
@@ -61,7 +61,7 @@ public class App {
                 storage.create(BucketInfo.newBuilder(bucketName).build());
             }
 
-            // configuring the bucket to send notifications to a topic
+            // configuring the bucket to send notifications to a topic (this is not needed for fake-gcs-server. See readme)
             {
                 // Create the notification
                 // NotificationInfo notificationInfo = NotificationInfo.newBuilder(topicName)
@@ -77,12 +77,12 @@ public class App {
             }
 
             WriteChannel channel = storage
-                    .writer(BlobInfo.newBuilder(bucketName, "some_file2.txt").build());
+                    .writer(BlobInfo.newBuilder(bucketName, "veryNewFile.txt").build());
             channel.write(ByteBuffer.wrap("line3\n".getBytes()));
             channel.write(ByteBuffer.wrap("line4\n".getBytes()));
             channel.close();
 
-            Blob someFile2 = storage.get(bucketName, "some_file2.txt");
+            Blob someFile2 = storage.get(bucketName, "veryNewFile.txt");
             String fileContent = new String(someFile2.getContent());
 
             System.out.println(fileContent);
@@ -90,11 +90,6 @@ public class App {
             // image should run from here: docker run -d -p 4443:4443
             // fsouza/fake-gcs-server:latest -scheme http
             // check buckets with: curl http://localhost:4443/storage/v1/b
-        }
-
-        // PUBSUB
-        {
-
         }
 
     }
