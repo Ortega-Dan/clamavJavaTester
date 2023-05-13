@@ -1,7 +1,6 @@
 package org.danort;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+// import java.io.FileInputStream;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 
@@ -14,8 +13,8 @@ import com.google.cloud.storage.BucketInfo;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 
-import xyz.capybara.clamav.ClamavClient;
-import xyz.capybara.clamav.commands.scan.result.ScanResult;
+// import xyz.capybara.clamav.ClamavClient;
+// import xyz.capybara.clamav.commands.scan.result.ScanResult;
 
 /**
  * Hello world!
@@ -26,13 +25,13 @@ public class App {
 
         // CLAMAV
         {
-            ClamavClient client = new ClamavClient("localhost");
+            // ClamavClient client = new ClamavClient("localhost");
 
-            FileInputStream fis = new FileInputStream(args[0]);
+            // FileInputStream fis = new FileInputStream(args[0]);
 
-            ScanResult result = client.scan(fis);
+            // ScanResult result = client.scan(fis);
 
-            System.out.println(" ****** " + result.getClass().getSimpleName() + " ****** ");
+            // System.out.println(" ****** " + result.getClass().getSimpleName() + " ****** ");
         }
 
         // CLOUDSTORAGE
