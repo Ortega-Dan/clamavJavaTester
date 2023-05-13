@@ -47,6 +47,7 @@ public class App {
             String projectId = "project-dev";
             String bucketName = "bucketNameNew";
             // String topicName = "projects/project-dev/topics/NEW_FILE_UPLOAD";
+            String fileName = "veryNewFile.txt";
 
             Storage storage = StorageOptions.newBuilder()
                     .setHost(fakeGcsExternalUrl)
@@ -77,12 +78,12 @@ public class App {
             }
 
             WriteChannel channel = storage
-                    .writer(BlobInfo.newBuilder(bucketName, "veryNewFile.txt").build());
+                    .writer(BlobInfo.newBuilder(bucketName, fileName).build());
             channel.write(ByteBuffer.wrap("line3\n".getBytes()));
             channel.write(ByteBuffer.wrap("line4\n".getBytes()));
             channel.close();
 
-            Blob someFile2 = storage.get(bucketName, "veryNewFile.txt");
+            Blob someFile2 = storage.get(bucketName, fileName);
             String fileContent = new String(someFile2.getContent());
 
             System.out.println(fileContent);
